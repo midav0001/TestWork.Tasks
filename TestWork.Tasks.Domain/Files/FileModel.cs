@@ -34,7 +34,7 @@ public class FileModel
     /// <param name="name">Наименование</param>
     /// <param name="size">Размер файла</param>
     /// <returns>Модель файла</returns>
-    public FileModel Create(FileId id, string name, long size)
+    public static FileModel Create(FileId id, string name, long size)
     {
         return new FileModel(id, name, size);
     }
