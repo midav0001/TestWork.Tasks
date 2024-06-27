@@ -1,0 +1,75 @@
+using TestWork.Tasks.Domain.Files;
+
+namespace TestWork.Tasks.Domain.Tasks;
+
+/// <summary>
+/// Доменная модель задачи
+/// </summary>
+public sealed class TaskModel
+{
+    private TaskModel(TaskId id, Name name, TaskStates state, IReadOnlyCollection<FileId> fileIds, DateTime createDate)
+    {
+        Id = id;
+        Name = name;
+        State = state;
+        FileIds = fileIds;
+        CreateDate = createDate;
+    }
+
+    /// <summary>
+    /// Идентификатор задачи
+    /// </summary>
+    public TaskId Id { get; }
+
+    /// <summary>
+    /// Наименование задачи
+    /// </summary>
+    public Name Name { get; private set; }
+
+    /// <summary>
+    /// Статус задачи
+    /// </summary>
+    public TaskStates State { get; private set; }
+
+    /// <summary>
+    /// Список идентификаторов файлов
+    /// </summary>
+    public IReadOnlyCollection<FileId> FileIds { get; private set; }
+
+    /// <summary>
+    /// Дата создания
+    /// </summary>
+    public DateTime CreateDate { get; }
+
+    /// <summary>
+    /// Создать
+    /// </summary>
+    /// <param name="id">Идентификатор</param>
+    /// <param name="name">Наименование</param>
+    /// <param name="fileIds">Список идентификаторов файлов</param>
+    /// <param name="createDate">Дата создания</param>
+    /// <returns>Доменная модель задачи</returns>
+    public static TaskModel Create(TaskId id, Name name, IReadOnlyCollection<FileId> fileIds, DateTime createDate)
+    {
+        return new TaskModel(id, name, TaskStates.New, fileIds, createDate);
+    }
+
+    /// <summary>
+    /// Обновить
+    /// </summary>
+    /// <param name="name">Наименование</param>
+    /// <param name="fileIds">Список файлов</param>
+    public void Update(Name name, IReadOnlyCollection<FileId> fileIds)
+    {
+        Name = name;
+        FileIds = fileIds;
+    }
+
+    /// <summary>
+    /// Удалить
+    /// </summary>
+    public void Delete()
+    {
+        State = TaskStates.Deleted;
+    }
+}
