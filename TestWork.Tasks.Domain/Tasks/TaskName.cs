@@ -5,9 +5,9 @@ namespace TestWork.Tasks.Domain.Tasks;
 /// <summary>
 /// Наименование задачи
 /// </summary>
-public sealed class Name
+public sealed class TaskName
 {
-    private Name(string value)
+    private TaskName(string value)
     {
         Value = value;
     }
@@ -22,13 +22,13 @@ public sealed class Name
     /// </summary>
     /// <param name="value">Значение</param>
     /// <returns>Доменная модель наименования</returns>
-    public Name Create(string value)
+    public static TaskName Create(string value)
     {
         if (string.IsNullOrWhiteSpace(value))
         {
             throw new ValidationException("Необходимо задать наименование задачи");
         }
 
-        return new Name(value);
+        return new TaskName(value);
     }
 }

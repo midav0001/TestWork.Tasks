@@ -7,7 +7,7 @@ namespace TestWork.Tasks.Domain.Tasks;
 /// </summary>
 public sealed class TaskModel
 {
-    private TaskModel(TaskId id, Name name, TaskStates state, IReadOnlyCollection<FileId> fileIds, DateTime createDate)
+    private TaskModel(TaskId id, TaskName name, TaskStates state, IReadOnlyCollection<FileId> fileIds, DateTime createDate)
     {
         Id = id;
         Name = name;
@@ -24,7 +24,7 @@ public sealed class TaskModel
     /// <summary>
     /// Наименование задачи
     /// </summary>
-    public Name Name { get; private set; }
+    public TaskName Name { get; private set; }
 
     /// <summary>
     /// Статус задачи
@@ -49,9 +49,9 @@ public sealed class TaskModel
     /// <param name="fileIds">Список идентификаторов файлов</param>
     /// <param name="createDate">Дата создания</param>
     /// <returns>Доменная модель задачи</returns>
-    public static TaskModel Create(TaskId id, Name name, IReadOnlyCollection<FileId> fileIds, DateTime createDate)
+    public static TaskModel Create(TaskId id, TaskName name, IEnumerable<FileId> fileIds, DateTime createDate)
     {
-        return new TaskModel(id, name, TaskStates.New, fileIds, createDate);
+        return new TaskModel(id, name, TaskStates.New, fileIds.ToArray(), createDate);
     }
 
     /// <summary>
@@ -59,7 +59,7 @@ public sealed class TaskModel
     /// </summary>
     /// <param name="name">Наименование</param>
     /// <param name="fileIds">Список файлов</param>
-    public void Update(Name name, IReadOnlyCollection<FileId> fileIds)
+    public void Update(TaskName name, IReadOnlyCollection<FileId> fileIds)
     {
         Name = name;
         FileIds = fileIds;
