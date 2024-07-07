@@ -9,7 +9,7 @@ public class TaskEntity
     /// <summary>
     /// Идентификатор
     /// </summary>
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     /// <summary>
     /// Наименование
@@ -30,4 +30,6 @@ public class TaskEntity
     /// Список файлов задачи
     /// </summary>
     public List<FileStorageEntity> Files { get; set; } = [];
+
+    public List<TaskFileStorageEntity> TaskFileStorages { get; set; } = [];
 }

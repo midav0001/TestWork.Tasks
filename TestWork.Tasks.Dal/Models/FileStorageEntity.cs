@@ -16,17 +16,9 @@ public class FileStorageEntity
     public string Name { get; set; } = null!;
 
     /// <summary>
-    /// Хэш файла
-    /// </summary>
-    public string Hash { get; set; }
-
-    /// <summary>
-    /// Размер файла
-    /// </summary>
-    public long Size { get; set; }
-    
-    /// <summary>
     /// Список задач файла
     /// </summary>
-    public List<TaskEntity> Tasks { get; set; }
+    public List<TaskEntity> Tasks { get; set; } = [];
+
+    public List<TaskFileStorageEntity> TaskFileStorages { get; set; } = [];
 }
