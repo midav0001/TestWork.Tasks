@@ -7,7 +7,8 @@ namespace TestWork.Tasks.Domain.Tasks;
 /// </summary>
 public sealed class TaskModel
 {
-    private TaskModel(TaskId id, TaskName name, TaskStates state, IReadOnlyCollection<FileId> fileIds, DateTime createDate)
+    private TaskModel(TaskId id, TaskName name, TaskStates state, IReadOnlyCollection<FileId> fileIds,
+        DateTime createDate)
     {
         Id = id;
         Name = name;
@@ -52,6 +53,22 @@ public sealed class TaskModel
     public static TaskModel Create(TaskId id, TaskName name, IEnumerable<FileId> fileIds, DateTime createDate)
     {
         return new TaskModel(id, name, TaskStates.New, fileIds.ToArray(), createDate);
+    }
+
+
+    /// <summary>
+    ///     Создать
+    /// </summary>
+    /// <param name="id">Идентификатор</param>
+    /// <param name="name">Наименование</param>
+    /// <param name="fileIds">Список идентификаторов файлов</param>
+    /// <param name="createDate">Дата создания</param>
+    /// <param name="state">Статус</param>
+    /// <returns>Доменная модель задачи</returns>
+    public static TaskModel Restore(TaskId id, TaskName name, IEnumerable<FileId> fileIds, DateTime createDate,
+        TaskStates state)
+    {
+        return new TaskModel(id, name, state, fileIds.ToArray(), createDate);
     }
 
     /// <summary>
