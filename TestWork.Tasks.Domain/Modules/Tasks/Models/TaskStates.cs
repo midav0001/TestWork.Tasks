@@ -1,4 +1,4 @@
-namespace TestWork.Tasks.Domain.Tasks;
+namespace TestWork.Tasks.Domain.Modules.Tasks.Models;
 
 /// <summary>
 /// Статусы выполнения задачи

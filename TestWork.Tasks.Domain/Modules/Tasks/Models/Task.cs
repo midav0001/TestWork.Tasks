@@ -1,6 +1,6 @@
-using TestWork.Tasks.Domain.Files;
+using TestWork.Tasks.Domain.Modules.Files.Models;
 
-namespace TestWork.Tasks.Domain.Tasks;
+namespace TestWork.Tasks.Domain.Modules.Tasks.Models;
 
 /// <summary>
 /// Доменная модель задачи

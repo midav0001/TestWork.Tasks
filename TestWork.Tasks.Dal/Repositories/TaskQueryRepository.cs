@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using TestWork.Tasks.Application.Interfaces;
-using TestWork.Tasks.Application.Models;
+using TestWork.Tasks.Application.Modules.Tasks.Interfaces;
+using TestWork.Tasks.Application.Modules.Tasks.Models;
 using TestWork.Tasks.Dal.Context;
 using TestWork.Tasks.Dal.Mappers;
-using TestWork.Tasks.Domain.Filters;
-using TestWork.Tasks.Domain.Tasks;
+using TestWork.Tasks.Domain.Modules.Tasks.Filters;
+using TestWork.Tasks.Domain.Modules.Tasks.Models;
 
 namespace TestWork.Tasks.Dal.Repositories;
 

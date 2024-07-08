@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using TestWork.Tasks.Application.Interfaces;
+using TestWork.Tasks.Application.Modules.Tasks.Interfaces;
 using TestWork.Tasks.Dal.Context;
 using TestWork.Tasks.Dal.Repositories;
-using TestWork.Tasks.Domain.Repositories;
+using TestWork.Tasks.Domain.Modules.Files.Repositories;
+using TestWork.Tasks.Domain.Modules.Tasks.Repositories;
 
 namespace TestWork.Tasks.Dal.Infrastructure.Extensions;
 

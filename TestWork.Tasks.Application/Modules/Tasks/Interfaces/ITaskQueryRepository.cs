@@ -1,8 +1,8 @@
-using TestWork.Tasks.Application.Models;
-using TestWork.Tasks.Domain.Filters;
-using TestWork.Tasks.Domain.Tasks;
+using TestWork.Tasks.Application.Modules.Tasks.Models;
+using TestWork.Tasks.Domain.Modules.Tasks.Filters;
+using TestWork.Tasks.Domain.Modules.Tasks.Models;
 
-namespace TestWork.Tasks.Application.Interfaces;
+namespace TestWork.Tasks.Application.Modules.Tasks.Interfaces;
 
 /// <summary>
 ///     Репозиторий для чтения задач

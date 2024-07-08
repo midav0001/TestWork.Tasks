@@ -2,17 +2,16 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using TestWork.Tasks.Application.Modules.FileStorages.Services;
 using TestWork.Tasks.Domain.Exceptions;
-using TestWork.Tasks.Domain.Files;
-using TestWork.Tasks.Domain.Repositories;
+using TestWork.Tasks.Domain.Modules.Files.Models;
+using TestWork.Tasks.Domain.Modules.Files.Repositories;
 
 namespace TestWork.Tasks.Application.Modules.Files.Queries;
 
 public sealed class DownloadFileQuery(Guid id) : IRequest<IFormFile>
 {
-    public Guid Id { get; set; } = id;
+    public Guid Id { get; } = id;
 
-
-    public sealed class DownloadFileQueryHandler(
+    internal sealed class DownloadFileQueryHandler(
         IFileStorageService fileStorageService,
         IFileStorageRepository fileStorageRepository)
         : IRequestHandler<DownloadFileQuery, IFormFile>

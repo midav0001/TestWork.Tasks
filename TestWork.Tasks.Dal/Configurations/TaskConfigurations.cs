@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TestWork.Tasks.Dal.Models;
-using TestWork.Tasks.Domain.Tasks;
+using TestWork.Tasks.Domain.Modules.Tasks.Models;
 
 namespace TestWork.Tasks.Dal.Configurations;
 

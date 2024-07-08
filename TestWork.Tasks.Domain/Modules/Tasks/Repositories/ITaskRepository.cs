@@ -1,6 +1,6 @@
-using TestWork.Tasks.Domain.Tasks;
+using TestWork.Tasks.Domain.Modules.Tasks.Models;
 
-namespace TestWork.Tasks.Domain.Repositories;
+namespace TestWork.Tasks.Domain.Modules.Tasks.Repositories;
 
 /// <summary>
 /// Репозиторий для работы с задачами

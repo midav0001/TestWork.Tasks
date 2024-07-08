@@ -1,4 +1,4 @@
-namespace TestWork.Tasks.Application.Models;
+namespace TestWork.Tasks.Application.Modules.Tasks.Models;
 
 public class TaskData
 {

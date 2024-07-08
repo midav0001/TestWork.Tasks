@@ -1,4 +1,4 @@
-namespace TestWork.Tasks.Domain.Files;
+namespace TestWork.Tasks.Domain.Modules.Files.Models;
 
 /// <summary>
 /// Доменная модель файла

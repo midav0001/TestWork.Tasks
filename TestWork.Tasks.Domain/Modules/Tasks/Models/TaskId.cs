@@ -1,6 +1,6 @@
 using TestWork.Tasks.Domain.Common;
 
-namespace TestWork.Tasks.Domain.Tasks;
+namespace TestWork.Tasks.Domain.Modules.Tasks.Models;
 
 /// <summary>
 /// Доменная модель идентификатора задачи

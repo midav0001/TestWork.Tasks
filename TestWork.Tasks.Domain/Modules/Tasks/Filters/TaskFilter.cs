@@ -1,4 +1,4 @@
-namespace TestWork.Tasks.Domain.Filters;
+namespace TestWork.Tasks.Domain.Modules.Tasks.Filters;
 
 public class TaskFilter
 {

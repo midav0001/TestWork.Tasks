@@ -1,16 +1,16 @@
 using MediatR;
-using TestWork.Tasks.Application.Interfaces;
-using TestWork.Tasks.Application.Models;
-using TestWork.Tasks.Domain.Filters;
+using TestWork.Tasks.Application.Modules.Tasks.Interfaces;
+using TestWork.Tasks.Application.Modules.Tasks.Models;
+using TestWork.Tasks.Domain.Modules.Tasks.Filters;
 
 namespace TestWork.Tasks.Application.Modules.Tasks.Queries;
 
 public sealed class GetTaskListQuery(TaskFilter filter) : IRequest<IReadOnlyCollection<TaskView>>
 {
-    public TaskFilter Filter { get; set; } = filter;
+    public TaskFilter Filter { get; } = filter;
 
 
-    public sealed class GetTaskListQueryHandler(ITaskQueryRepository taskRepository)
+    internal sealed class GetTaskListQueryHandler(ITaskQueryRepository taskRepository)
         : IRequestHandler<GetTaskListQuery, IReadOnlyCollection<TaskView>>
     {
         public async Task<IReadOnlyCollection<TaskView>> Handle(GetTaskListQuery request,

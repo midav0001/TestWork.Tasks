@@ -1,6 +1,6 @@
-using TestWork.Tasks.Domain.Tasks;
+using TestWork.Tasks.Domain.Modules.Tasks.Models;
 
-namespace TestWork.Tasks.Application.Models;
+namespace TestWork.Tasks.Application.Modules.Tasks.Models;
 
 public sealed class TaskListItem
 {

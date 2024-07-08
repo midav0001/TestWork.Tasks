@@ -1,6 +1,6 @@
 using TestWork.Tasks.Domain.Exceptions;
 
-namespace TestWork.Tasks.Domain.Tasks;
+namespace TestWork.Tasks.Domain.Modules.Tasks.Models;
 
 /// <summary>
 /// Наименование задачи

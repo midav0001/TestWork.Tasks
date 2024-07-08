@@ -1,6 +1,6 @@
-using TestWork.Tasks.Domain.Files;
+using TestWork.Tasks.Domain.Modules.Files.Models;
 
-namespace TestWork.Tasks.Domain.Repositories;
+namespace TestWork.Tasks.Domain.Modules.Files.Repositories;
 
 /// <summary>
 /// Репозиторий для работы с файлами

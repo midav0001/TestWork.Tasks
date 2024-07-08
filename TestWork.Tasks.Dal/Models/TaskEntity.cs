@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
-using TestWork.Tasks.Domain.Tasks;
+using TestWork.Tasks.Domain.Modules.Tasks.Models;
 
 namespace TestWork.Tasks.Dal.Models;
 

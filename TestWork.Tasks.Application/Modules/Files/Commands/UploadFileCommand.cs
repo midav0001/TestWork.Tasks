@@ -1,8 +1,8 @@
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using TestWork.Tasks.Application.Modules.FileStorages.Services;
-using TestWork.Tasks.Domain.Files;
-using TestWork.Tasks.Domain.Repositories;
+using TestWork.Tasks.Domain.Modules.Files.Models;
+using TestWork.Tasks.Domain.Modules.Files.Repositories;
 
 namespace TestWork.Tasks.Application.Modules.Files.Commands;
 
@@ -10,7 +10,7 @@ public sealed class UploadFileCommand(IFormFile file) : IRequest<Guid>
 {
     public IFormFile File { get; } = file;
 
-    public class UploadFileCommandHandler(
+    internal class UploadFileCommandHandler(
         IFileStorageService fileStorageService,
         IFileStorageRepository fileStorageRepository)
         : IRequestHandler<UploadFileCommand, Guid>

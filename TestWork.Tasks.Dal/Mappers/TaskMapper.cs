@@ -1,7 +1,7 @@
-using TestWork.Tasks.Application.Models;
+using TestWork.Tasks.Application.Modules.Tasks.Models;
 using TestWork.Tasks.Dal.Models;
-using TestWork.Tasks.Domain.Files;
-using TestWork.Tasks.Domain.Tasks;
+using TestWork.Tasks.Domain.Modules.Files.Models;
+using TestWork.Tasks.Domain.Modules.Tasks.Models;
 
 namespace TestWork.Tasks.Dal.Mappers;
 

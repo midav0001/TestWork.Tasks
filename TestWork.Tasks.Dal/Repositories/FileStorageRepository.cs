@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using TestWork.Tasks.Dal.Context;
 using TestWork.Tasks.Dal.Mappers;
-using TestWork.Tasks.Domain.Files;
-using TestWork.Tasks.Domain.Repositories;
+using TestWork.Tasks.Domain.Modules.Files.Models;
+using TestWork.Tasks.Domain.Modules.Files.Repositories;
 
 namespace TestWork.Tasks.Dal.Repositories;
 
