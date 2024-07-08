@@ -6,8 +6,10 @@ using TestWork.Tasks.Domain.Modules.Files.Repositories;
 
 namespace TestWork.Tasks.Dal.Repositories;
 
+/// <inheritdoc />
 internal sealed class FileStorageRepository(IDbContextFactory<TaskContext> contextFactory) : IFileStorageRepository
 {
+    /// <inheritdoc />
     public async Task<FileModel?> GetAsync(FileId id, CancellationToken token)
     {
         await using var context = await contextFactory.CreateDbContextAsync(token);
@@ -17,6 +19,7 @@ internal sealed class FileStorageRepository(IDbContextFactory<TaskContext> conte
         return file?.Map();
     }
 
+    /// <inheritdoc />
     public async Task SaveAsync(FileModel file, CancellationToken token)
     {
         await using var context = await contextFactory.CreateDbContextAsync(token);

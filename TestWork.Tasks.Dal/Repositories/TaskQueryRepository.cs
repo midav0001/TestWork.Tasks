@@ -8,8 +8,10 @@ using TestWork.Tasks.Domain.Modules.Tasks.Models;
 
 namespace TestWork.Tasks.Dal.Repositories;
 
+/// <inheritdoc />
 internal class TaskQueryRepository(IDbContextFactory<TaskContext> contextFactory) : ITaskQueryRepository
 {
+    /// <inheritdoc />
     public async Task<IReadOnlyCollection<TaskListItem>> GetManyAsync(TaskFilter filter, CancellationToken token)
     {
         await using var context = await contextFactory.CreateDbContextAsync(token);
@@ -25,6 +27,7 @@ internal class TaskQueryRepository(IDbContextFactory<TaskContext> contextFactory
         return entities.Select(x => x.Map()).ToArray();
     }
 
+    /// <inheritdoc />
     public async Task<TaskListItem?> GetAsync(TaskId id, CancellationToken token)
     {
         await using var context = await contextFactory.CreateDbContextAsync(token);

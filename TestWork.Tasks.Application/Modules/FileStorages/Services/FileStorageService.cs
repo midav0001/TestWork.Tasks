@@ -1,9 +1,11 @@
 namespace TestWork.Tasks.Application.Modules.FileStorages.Services;
 
+/// <inheritdoc />
 internal sealed class FileStorageService : IFileStorageService
 {
     private const string FileRoute = "../TestWork.Tasks.Application/Modules/FileStorages/Data/";
 
+    /// <inheritdoc />
     public async Task<Stream> DownloadFileAsync(Guid id, CancellationToken token)
     {
         var path = FileRoute + id;
@@ -15,7 +17,8 @@ internal sealed class FileStorageService : IFileStorageService
         return memoryStream;
     }
 
-    public async Task SaveAsync(Guid id, Stream data, CancellationToken token)
+    /// <inheritdoc />
+    public async Task UploadAsync(Guid id, Stream data, CancellationToken token)
     {
         var path = FileRoute + id;
         await using var fileStream = new FileStream(path, FileMode.CreateNew);

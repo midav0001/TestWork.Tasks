@@ -21,7 +21,7 @@ public sealed class UploadFileCommand(IFormFile file) : IRequest<Guid>
             await request.File.CopyToAsync(memoryStream, cancellationToken);
 
             var fileModel = FileModel.Create(FileId.Create(Guid.NewGuid()), request.File.FileName);
-            await fileStorageService.SaveAsync(fileModel.Id.Value, memoryStream, cancellationToken);
+            await fileStorageService.UploadAsync(fileModel.Id.Value, memoryStream, cancellationToken);
             await fileStorageRepository.SaveAsync(fileModel, cancellationToken);
 
             return fileModel.Id.Value;

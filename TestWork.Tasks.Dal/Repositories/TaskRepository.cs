@@ -6,8 +6,10 @@ using TestWork.Tasks.Domain.Modules.Tasks.Repositories;
 
 namespace TestWork.Tasks.Dal.Repositories;
 
+/// <inheritdoc />
 internal sealed class TaskRepository(IDbContextFactory<TaskContext> contextFactory) : ITaskRepository
 {
+    /// <inheritdoc />
     public async Task<TaskModel?> GetAsync(TaskId id, CancellationToken token)
     {
         await using var context = await contextFactory.CreateDbContextAsync(token);
@@ -17,6 +19,7 @@ internal sealed class TaskRepository(IDbContextFactory<TaskContext> contextFacto
         return task?.MapToDomain();
     }
 
+    /// <inheritdoc />
     public Task SaveAsync(TaskModel task, CancellationToken token)
     {
         throw new NotImplementedException();
