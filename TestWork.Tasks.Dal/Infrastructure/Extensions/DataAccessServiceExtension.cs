@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using TestWork.Tasks.Application.Interfaces;
 using TestWork.Tasks.Dal.Context;
 using TestWork.Tasks.Dal.Repositories;
 using TestWork.Tasks.Domain.Repositories;
@@ -19,7 +20,9 @@ public static class DataAccessServiceExtension
     /// </param>
     public static IServiceCollection ConfigurePostgresDataAccessServices(this IServiceCollection services)
     {
-        return services.AddScoped<IDbContextFactory<TaskContext>, TaskContextFactory>()
+        return services
+            .AddScoped<IDbContextFactory<TaskContext>, TaskContextFactory>()
+            .AddScoped<ITaskQueryRepository, TaskQueryRepository>()
             .AddScoped<ITaskRepository, TaskRepository>();
     }
 }

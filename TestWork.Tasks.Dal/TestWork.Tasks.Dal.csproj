@@ -12,6 +12,7 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.6"/>
     </ItemGroup>
     <ItemGroup>
+        <ProjectReference Include="..\TestWork.Tasks.Application\TestWork.Tasks.Application.csproj"/>
         <ProjectReference Include="..\TestWork.Tasks.Domain\TestWork.Tasks.Domain.csproj"/>
     </ItemGroup>
     <ItemGroup>

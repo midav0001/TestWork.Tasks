@@ -1,16 +1,16 @@
 using MediatR;
+using TestWork.Tasks.Application.Interfaces;
 using TestWork.Tasks.Application.Models;
 using TestWork.Tasks.Domain.Filters;
-using TestWork.Tasks.Domain.Repositories;
 
-namespace TestWork.Tasks.Application.Tasks.Queries;
+namespace TestWork.Tasks.Application.Modules.Tasks.Queries;
 
 public sealed class GetTaskListQuery(TaskFilter filter) : IRequest<IReadOnlyCollection<TaskView>>
 {
     public TaskFilter Filter { get; set; } = filter;
 
 
-    public sealed class GetTaskListQueryHandler(ITaskRepository taskRepository)
+    public sealed class GetTaskListQueryHandler(ITaskQueryRepository taskRepository)
         : IRequestHandler<GetTaskListQuery, IReadOnlyCollection<TaskView>>
     {
         public async Task<IReadOnlyCollection<TaskView>> Handle(GetTaskListQuery request,
@@ -21,7 +21,7 @@ public sealed class GetTaskListQuery(TaskFilter filter) : IRequest<IReadOnlyColl
             return tasks.Select(x =>
                 new TaskView
                 {
-                    Id = x.Id.Value,
+                    Id = x.Id,
                     Properties = new PropertyData[]
                     {
                         new()
@@ -38,11 +38,6 @@ public sealed class GetTaskListQuery(TaskFilter filter) : IRequest<IReadOnlyColl
                         {
                             Key = "State",
                             Value = x.State
-                        },
-                        new()
-                        {
-                            Key = "FileIds",
-                            Value = x.FileIds.Select(f => f.Value)
                         }
                     }
                 }).ToArray();

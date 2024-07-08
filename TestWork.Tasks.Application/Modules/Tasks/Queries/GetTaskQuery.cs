@@ -1,17 +1,18 @@
 using MediatR;
+using TestWork.Tasks.Application.Interfaces;
 using TestWork.Tasks.Application.Models;
 using TestWork.Tasks.Domain.Exceptions;
-using TestWork.Tasks.Domain.Repositories;
 using TestWork.Tasks.Domain.Tasks;
 
-namespace TestWork.Tasks.Application.Tasks.Queries;
+namespace TestWork.Tasks.Application.Modules.Tasks.Queries;
 
 public sealed class GetTaskQuery(TaskId id) : IRequest<TaskView>
 {
     public TaskId Id { get; set; } = id;
 
 
-    public sealed class GetTaskQueryHandler(ITaskRepository taskRepository) : IRequestHandler<GetTaskQuery, TaskView>
+    public sealed class GetTaskQueryHandler(ITaskQueryRepository taskRepository)
+        : IRequestHandler<GetTaskQuery, TaskView>
     {
         public async Task<TaskView> Handle(GetTaskQuery request,
             CancellationToken cancellationToken)
@@ -21,7 +22,7 @@ public sealed class GetTaskQuery(TaskId id) : IRequest<TaskView>
 
             return new TaskView
             {
-                Id = x.Id.Value,
+                Id = x.Id,
                 Properties = new PropertyData[]
                 {
                     new()
@@ -42,7 +43,12 @@ public sealed class GetTaskQuery(TaskId id) : IRequest<TaskView>
                     new()
                     {
                         Key = "FileIds",
-                        Value = x.FileIds.Select(x => x.Value)
+                        Value = x.Files.Select(f => new FileView
+                        {
+                            Id = f.Id,
+                            Name = f.Name,
+                            Link = $"http://localhost:5244/files/{f.Id}"
+                        }).ToArray()
                     }
                 }
             };

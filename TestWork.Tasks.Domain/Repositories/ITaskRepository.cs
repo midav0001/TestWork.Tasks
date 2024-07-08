@@ -1,4 +1,3 @@
-using TestWork.Tasks.Domain.Filters;
 using TestWork.Tasks.Domain.Tasks;
 
 namespace TestWork.Tasks.Domain.Repositories;
@@ -8,14 +7,6 @@ namespace TestWork.Tasks.Domain.Repositories;
 /// </summary>
 public interface ITaskRepository
 {
-    /// <summary>
-    ///     Получить задачи по фильтру
-    /// </summary>
-    /// <param name="filter">Фильтр</param>
-    /// <param name="token">Токен отмены</param>
-    /// <returns>Список задач</returns>
-    public Task<IReadOnlyCollection<TaskModel>> GetManyAsync(TaskFilter filter, CancellationToken token);
-
     /// <summary>
     /// Получить задачу по идентификатору
     /// </summary>

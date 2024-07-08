@@ -1,7 +1,7 @@
 using MediatR;
 using TestWork.Tasks.Application.Models;
 
-namespace TestWork.Tasks.Application.Tasks.Queries;
+namespace TestWork.Tasks.Application.Modules.Tasks.Queries;
 
 public class GetMetadataQuery : IRequest<IReadOnlyCollection<PropertyMetadata>>
 {

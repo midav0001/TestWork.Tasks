@@ -1,7 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using TestWork.Tasks.Application.Models;
-using TestWork.Tasks.Application.Tasks.Queries;
+using TestWork.Tasks.Application.Modules.Tasks.Queries;
 using TestWork.Tasks.Domain.Filters;
 using TestWork.Tasks.Domain.Tasks;
 
