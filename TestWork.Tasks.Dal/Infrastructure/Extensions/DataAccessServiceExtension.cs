@@ -8,20 +8,21 @@ using TestWork.Tasks.Domain.Repositories;
 namespace TestWork.Tasks.Dal.Infrastructure.Extensions;
 
 /// <summary>
-///     Методы регистрации сервисов для работы с бд
+/// Методы регистрации сервисов для работы с бд
 /// </summary>
 public static class DataAccessServiceExtension
 {
     /// <summary>
-    ///     Регистрирует сервисы для работы с БД
+    /// Регистрирует сервисы для работы с БД
     /// </summary>
     /// <param name="services">
-    ///     Экземпляр класса <see cref="IServiceCollection" />
+    /// Экземпляр класса <see cref="IServiceCollection" />
     /// </param>
     public static IServiceCollection ConfigurePostgresDataAccessServices(this IServiceCollection services)
     {
         return services
             .AddScoped<IDbContextFactory<TaskContext>, TaskContextFactory>()
+            .AddScoped<IFileStorageRepository, FileStorageRepository>()
             .AddScoped<ITaskQueryRepository, TaskQueryRepository>()
             .AddScoped<ITaskRepository, TaskRepository>();
     }

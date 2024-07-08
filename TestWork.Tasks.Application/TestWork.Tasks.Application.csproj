@@ -7,15 +7,26 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TestWork.Tasks.Domain\TestWork.Tasks.Domain.csproj" />
+        <ProjectReference Include="..\TestWork.Tasks.Domain\TestWork.Tasks.Domain.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="MediatR" Version="12.3.0" />
+        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+        <PackageReference Include="MediatR" Version="12.3.0"/>
     </ItemGroup>
 
     <ItemGroup>
+        <Folder Include="Modules\FileStorages\Data\"/>
         <Folder Include="Modules\Files\Mappers\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="Modules\FileStorages\Data\9FA47A41-01B8-47D5-8B4C-2C29CDA16BB9">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Modules\FileStorages\Data\583C1460-501C-444F-B6EF-A1D0E6C6753A">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
 </Project>

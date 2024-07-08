@@ -1,4 +1,5 @@
 using TestWork.Tasks.Application;
+using TestWork.Tasks.Application.Infrastructure.Extensions;
 using TestWork.Tasks.Dal.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddMediatR(x => x.RegisterServicesFromAssembly(typeof(ApplicationAssembly).Assembly));
 
 builder.Services.ConfigurePostgresDataAccessServices();
+builder.Services.AddApplicationLayerServices();
 
 var app = builder.Build();
 

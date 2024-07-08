@@ -5,11 +5,10 @@ namespace TestWork.Tasks.Domain.Files;
 /// </summary>
 public class FileModel
 {
-    private FileModel(FileId id, string name, long size)
+    private FileModel(FileId id, string name)
     {
         Id = id;
         Name = name;
-        Size = size;
     }
 
     /// <summary>
@@ -22,20 +21,26 @@ public class FileModel
     /// </summary>
     public string Name { get; }
 
-    /// <summary>
-    /// Размер
-    /// </summary>
-    public long Size { get; }
 
     /// <summary>
     /// Создать
     /// </summary>
     /// <param name="id">Идентификатор</param>
     /// <param name="name">Наименование</param>
-    /// <param name="size">Размер файла</param>
     /// <returns>Модель файла</returns>
-    public static FileModel Create(FileId id, string name, long size)
+    public static FileModel Create(FileId id, string name)
     {
-        return new FileModel(id, name, size);
+        return new FileModel(id, name);
+    }
+
+    /// <summary>
+    /// Восстановить. Метод для восстановления модели из бд
+    /// </summary>
+    /// <param name="id">Идентификатор</param>
+    /// <param name="name">Наименование</param>
+    /// <returns>Модель файла</returns>
+    public static FileModel Restore(FileId id, string name)
+    {
+        return new FileModel(id, name);
     }
 }

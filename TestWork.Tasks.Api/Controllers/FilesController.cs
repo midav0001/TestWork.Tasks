@@ -1,14 +1,17 @@
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using TestWork.Tasks.Application.Modules.Files.Queries;
 
 namespace TestWork.Tasks.Api.Controllers;
 
 [ApiController]
 [Route("files")]
-public class FilesController : ControllerBase
+public class FilesController(ISender sender) : ControllerBase
 {
     [HttpGet("{id:guid}")]
-    public async Task<IFormFile> Download(Guid id, CancellationToken token)
+    public async Task<FileStreamResult> Download(Guid id, CancellationToken token)
     {
-        return null;
+        var file = await sender.Send(new DownloadFileQuery(id), token);
+        return File(file.OpenReadStream(), "application/octet-stream", file.Name);
     }
 }
