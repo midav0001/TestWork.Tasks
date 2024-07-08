@@ -8,7 +8,7 @@ namespace TestWork.Tasks.Domain.Modules.Files.Repositories;
 public interface IFileStorageRepository
 {
     /// <summary>
-    ///     Получить данные о файле
+    /// Получить данные о файле
     /// </summary>
     /// <param name="id"></param>
     /// <param name="token"></param>

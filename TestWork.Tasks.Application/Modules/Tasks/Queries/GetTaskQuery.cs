@@ -1,4 +1,5 @@
 using MediatR;
+using TestWork.Tasks.Application.Modules.Tasks.Constants;
 using TestWork.Tasks.Application.Modules.Tasks.Interfaces;
 using TestWork.Tasks.Application.Modules.Tasks.Models;
 using TestWork.Tasks.Domain.Exceptions;
@@ -26,22 +27,22 @@ public sealed class GetTaskQuery(TaskId id) : IRequest<TaskView>
                 {
                     new()
                     {
-                        Key = "Name",
+                        Key = PropertyNameKeys.Name,
                         Value = x.Name
                     },
                     new()
                     {
-                        Key = "CreateDate",
+                        Key = PropertyNameKeys.CreateDate,
                         Value = x.CreateDate
                     },
                     new()
                     {
-                        Key = "State",
+                        Key = PropertyNameKeys.State,
                         Value = x.State
                     },
                     new()
                     {
-                        Key = "FileIds",
+                        Key = PropertyNameKeys.Files,
                         Value = x.Files.Select(f => new FileView
                         {
                             Id = f.Id,
