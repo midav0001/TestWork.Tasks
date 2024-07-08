@@ -10,4 +10,13 @@ public static class FileMapper
         var fileId = FileId.Create(entity.Id);
         return FileModel.Restore(fileId, entity.Name);
     }
+
+    public static FileStorageEntity Map(this FileModel model)
+    {
+        return new FileStorageEntity
+        {
+            Name = model.Name,
+            Id = model.Id.Value
+        };
+    }
 }

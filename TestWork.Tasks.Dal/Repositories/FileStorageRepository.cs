@@ -17,8 +17,11 @@ internal sealed class FileStorageRepository(IDbContextFactory<TaskContext> conte
         return file?.Map();
     }
 
-    public Task SaveAsync(FileModel file, CancellationToken token)
+    public async Task SaveAsync(FileModel file, CancellationToken token)
     {
-        throw new NotImplementedException();
+        await using var context = await contextFactory.CreateDbContextAsync(token);
+        var fileStorageEntity = file.Map();
+        await context.Files.AddAsync(fileStorageEntity, token);
+        await context.SaveChangesAsync(token);
     }
 }

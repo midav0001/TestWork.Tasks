@@ -15,8 +15,11 @@ internal sealed class FileStorageService : IFileStorageService
         return memoryStream;
     }
 
-    public Task SaveAsync(Guid id, Stream data, CancellationToken token)
+    public async Task SaveAsync(Guid id, Stream data, CancellationToken token)
     {
-        throw new NotImplementedException();
+        var path = FileRoute + id;
+        await using var fileStream = new FileStream(path, FileMode.CreateNew);
+        data.Seek(0, SeekOrigin.Begin);
+        await data.CopyToAsync(fileStream, token);
     }
 }
