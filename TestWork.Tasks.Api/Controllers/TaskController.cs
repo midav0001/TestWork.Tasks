@@ -69,8 +69,14 @@ public class TaskController(ISender mediator) : ControllerBase
         await mediator.Send(new TaskUpdateCommand(id, taskData), token);
     }
 
+    /// <summary>
+    ///     Удалить задачу
+    /// </summary>
+    /// <param name="id">Идентификатор задачи</param>
+    /// <param name="token">Токен отмены</param>
     [HttpDelete("{id:guid}")]
     public async Task DeleteAsync([FromRoute] Guid id, CancellationToken token)
     {
+        await mediator.Send(new TaskDeleteCommand(id), token);
     }
 }
