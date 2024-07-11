@@ -22,7 +22,7 @@ public sealed class TaskName
     /// </summary>
     /// <param name="value">Значение</param>
     /// <returns>Доменная модель наименования</returns>
-    public static TaskName Create(string value)
+    public static TaskName Create(string? value)
     {
         if (string.IsNullOrWhiteSpace(value))
         {

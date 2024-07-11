@@ -50,9 +50,9 @@ public sealed class TaskModel
     /// <param name="fileIds">Список идентификаторов файлов</param>
     /// <param name="createDate">Дата создания</param>
     /// <returns>Доменная модель задачи</returns>
-    public static TaskModel Create(TaskId id, TaskName name, IEnumerable<FileId> fileIds, DateTime createDate)
+    public static TaskModel Create(TaskId id, TaskName name, IEnumerable<FileId>? fileIds, DateTime createDate)
     {
-        return new TaskModel(id, name, TaskStates.New, fileIds.ToArray(), createDate);
+        return new TaskModel(id, name, TaskStates.New, fileIds?.ToArray() ?? ArraySegment<FileId>.Empty, createDate);
     }
 
 
@@ -76,10 +76,10 @@ public sealed class TaskModel
     /// </summary>
     /// <param name="name">Наименование</param>
     /// <param name="fileIds">Список файлов</param>
-    public void Update(TaskName name, IReadOnlyCollection<FileId> fileIds)
+    public void Update(TaskName name, IReadOnlyCollection<FileId>? fileIds)
     {
         Name = name;
-        FileIds = fileIds;
+        FileIds = fileIds ?? ArraySegment<FileId>.Empty;
     }
 
     /// <summary>

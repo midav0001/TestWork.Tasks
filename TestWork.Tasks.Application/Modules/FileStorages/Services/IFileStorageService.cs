@@ -6,7 +6,7 @@ namespace TestWork.Tasks.Application.Modules.FileStorages.Services;
 public interface IFileStorageService
 {
     /// <summary>
-    ///     Скачать файл
+    /// Скачать файл
     /// </summary>
     /// <param name="id">Идентификатор файла</param>
     /// <param name="token">Токен отмены</param>
@@ -14,7 +14,7 @@ public interface IFileStorageService
     public Task<Stream> DownloadFileAsync(Guid id, CancellationToken token);
 
     /// <summary>
-    ///     Загрузить файл
+    /// Загрузить файл
     /// </summary>
     /// <param name="id">Идентификатор</param>
     /// <param name="data">Данные</param>

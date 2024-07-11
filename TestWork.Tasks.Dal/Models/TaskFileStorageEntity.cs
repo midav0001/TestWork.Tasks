@@ -20,7 +20,7 @@ public class TaskFileStorageEntity
     /// </summary>
     public Guid TaskId { get; set; }
 
-    public TaskEntity Task { get; set; }
+    public TaskEntity Task { get; set; } = null!;
 
-    public FileStorageEntity File { get; set; }
+    public FileStorageEntity File { get; set; } = null!;
 }

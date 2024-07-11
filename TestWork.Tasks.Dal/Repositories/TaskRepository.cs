@@ -20,8 +20,25 @@ internal sealed class TaskRepository(IDbContextFactory<TaskContext> contextFacto
     }
 
     /// <inheritdoc />
-    public Task SaveAsync(TaskModel task, CancellationToken token)
+    public async Task SaveAsync(TaskModel task, CancellationToken token)
     {
-        throw new NotImplementedException();
+        await using var context = await contextFactory.CreateDbContextAsync(token);
+        var existTask = await context.Tasks
+            .Include(x => x.Files)
+            .Include(x => x.TaskFileStorages)
+            .FirstOrDefaultAsync(x => x.Id == task.Id.Value, token);
+
+        var isNew = existTask is null;
+        var entity = task.Map(existTask);
+
+        if (isNew)
+            await context.Tasks.AddAsync(entity, token);
+        else
+            foreach (var entry in entity.TaskFileStorages
+                         .Select(taskFileStorageEntity => context.Entry(taskFileStorageEntity))
+                         .Where(entry => entry.State == EntityState.Modified))
+                entry.State = EntityState.Added;
+
+        await context.SaveChangesAsync(token);
     }
 }

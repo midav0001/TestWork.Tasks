@@ -1,5 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using TestWork.Tasks.Application.Modules.Tasks.Commands;
 using TestWork.Tasks.Application.Modules.Tasks.Models;
 using TestWork.Tasks.Application.Modules.Tasks.Queries;
 using TestWork.Tasks.Domain.Modules.Tasks.Filters;
@@ -27,14 +28,14 @@ public class TaskController(ISender mediator) : ControllerBase
     /// <param name="filter">Фильтр</param>
     /// <param name="token">Токен отмены</param>
     /// <returns>Список задач</returns>
-    [HttpPost]
+    [HttpPost("query")]
     public async Task<IReadOnlyCollection<TaskView>> GetListAsync([FromBody] TaskFilter filter, CancellationToken token)
     {
         return await mediator.Send(new GetTaskListQuery(filter), token);
     }
 
     /// <summary>
-    ///     Получить задачу
+    /// Получить задачу
     /// </summary>
     /// <param name="id">Идентификатор задачи</param>
     /// <param name="token">Токен отмены</param>
@@ -45,14 +46,27 @@ public class TaskController(ISender mediator) : ControllerBase
         return await mediator.Send(new GetTaskQuery(TaskId.Create(id)), token);
     }
 
-    [HttpPost("{id:guid}")]
-    public async Task CreateAsync([FromRoute] Guid id, [FromBody] TaskData taskData, CancellationToken token)
+    /// <summary>
+    ///     Создать задачу
+    /// </summary>
+    /// <param name="taskData">Задача</param>
+    /// <param name="token">Токен отмены</param>
+    [HttpPost]
+    public async Task<Guid> CreateAsync([FromBody] TaskData taskData, CancellationToken token)
     {
+        return await mediator.Send(new TaskCreateCommand(taskData), token);
     }
 
+    /// <summary>
+    ///     Обновить задачу
+    /// </summary>
+    /// <param name="id">Идентификатор</param>
+    /// <param name="taskData">Данные задачи</param>
+    /// <param name="token">Токен отмены</param>
     [HttpPut("{id:guid}")]
     public async Task UpdateAsync([FromRoute] Guid id, [FromBody] TaskData taskData, CancellationToken token)
     {
+        await mediator.Send(new TaskUpdateCommand(id, taskData), token);
     }
 
     [HttpDelete("{id:guid}")]

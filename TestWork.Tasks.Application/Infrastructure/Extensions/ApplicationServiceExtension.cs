@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using TestWork.Tasks.Application.Common;
 using TestWork.Tasks.Application.Modules.FileStorages.Services;
 
 namespace TestWork.Tasks.Application.Infrastructure.Extensions;
@@ -15,6 +16,8 @@ public static class ApplicationServiceExtension
     /// <returns>Ссылка на этот экземпляр после завершения операции</returns>
     public static IServiceCollection AddApplicationLayerServices(this IServiceCollection services)
     {
-        return services.AddScoped<IFileStorageService, FileStorageService>();
+        return services
+            .AddScoped<IDateTimeService, DateTimeService>()
+            .AddScoped<IFileStorageService, FileStorageService>();
     }
 }

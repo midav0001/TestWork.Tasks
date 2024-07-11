@@ -4,5 +4,5 @@ public sealed class FileListItem
 {
     public Guid Id { get; set; }
 
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 }
