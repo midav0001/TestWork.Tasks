@@ -18,7 +18,7 @@ public sealed class GetTaskQuery(TaskId id) : IRequest<TaskView>
             CancellationToken cancellationToken)
         {
             var x = await taskRepository.GetAsync(request.Id, cancellationToken);
-            if (x is null) throw new ValidationException("Не найдена задача по идентификатору");
+            if (x is null) throw new TaskNotFoundException();
 
             return new TaskView
             {
@@ -47,7 +47,8 @@ public sealed class GetTaskQuery(TaskId id) : IRequest<TaskView>
                         {
                             Id = f.Id,
                             Name = f.Name,
-                            Link = $"http://localhost:5244/file-storage/{f.Id}"
+                            Link =
+                                $"http://localhost:5244/file-storage/{f.Id}" //TODO: адрес файлового хранилища будет вынесен в конфиг 
                         }).ToArray()
                     }
                 }

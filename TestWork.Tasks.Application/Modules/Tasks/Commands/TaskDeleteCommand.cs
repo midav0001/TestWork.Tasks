@@ -15,7 +15,7 @@ public sealed class TaskDeleteCommand(Guid id) : IRequest
         {
             var taskModel = await taskRepository.GetAsync(TaskId.Create(request.Id), cancellationToken);
 
-            if (taskModel is null) throw new ValidationException("Не найдена задача по идентификатору");
+            if (taskModel is null) throw new TaskNotFoundException();
 
             taskModel.Delete();
 

@@ -21,7 +21,7 @@ public sealed class TaskUpdateCommand(Guid id, TaskData task) : IRequest
             var task = request.Task;
             var taskModel = await taskRepository.GetAsync(TaskId.Create(request.Id), cancellationToken);
 
-            if (taskModel is null) throw new ValidationException("Не найдена задача по идентификатору");
+            if (taskModel is null) throw new TaskNotFoundException();
 
             var name = task.Properties.Single(x => x.Key == PropertyNameKeys.Name).Value.ToString();
             var fileIds = task.Properties.MapFiles();
